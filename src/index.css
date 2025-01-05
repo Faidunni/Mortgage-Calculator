@@ -1,0 +1,177 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  background-color: hsl(202, 86%, 94%);
+  overflow-x: hidden;
+}
+
+main {
+  display: flex;
+  width: 70%;
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  /* justify-content: space-between; */
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title div {
+  text-decoration: underline;
+  color: hsl(200, 26%, 54%);
+}
+
+.form-area {
+  background-color: hsl(0, 0%, 100%);
+  padding: 10px 30px 30px 30px;
+  width: 50%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.result-area {
+  width: 50%;
+  background-color: hsl(202, 55%, 16%);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.result-area h2 {
+  color: #fff;
+}
+
+.result-area p {
+  color: hsl(202, 86%, 94%);
+  font-weight: 400;
+  font-size: 15px;
+  margin-top: -8px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: hsl(200, 26%, 54%);
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-with-symbol,
+.input-with-label {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid hsl(203, 41%, 72%);
+  border-radius: 5px;
+  /* padding: 5px; */
+  background-color: #f9f9f9;
+}
+
+.input-with-label span {
+  color: hsl(200, 24%, 40%);
+  background-color: hsl(203, 41%, 72%);
+  padding: 6.5px 16px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  font-weight: 700;
+}
+.input-with-symbol span {
+  color: hsl(200, 24%, 40%);
+  background-color: hsl(203, 41%, 72%);
+  padding: 6.5px 16px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  font-weight: 700;
+}
+
+input {
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 6px;
+  background-color: transparent;
+  font-size: 16px;
+}
+
+.tip {
+  border: 1.5px solid hsl(203, 41%, 72%);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+}
+
+.tip span {
+  font-weight: 700;
+  color: hsl(202, 55%, 16%);
+  margin-left: 30px;
+  text-align: center;
+}
+
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid hsl(203, 41%, 72%);
+  border-radius: 50%;
+  position: absolute;
+  outline: none;
+
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: hsl(61, 70%, 52%); /* Blue color for checked state */
+  border: 1.5px solid hsl(61, 70%, 52%);
+}
+
+button {
+  padding: 12px 40px;
+  font-size: 18px;
+  border-radius: 50px;
+  border: none;
+  background-color: hsl(61, 70%, 52%);
+  font-weight: 700;
+  color: hsl(202, 55%, 16%);
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  main {
+    width: 100%;
+    flex-direction: column;
+    margin: none;
+  }
+  .form-area,
+  .result-area {
+    width: 100%;
+    border-radius: 0;
+  }
+  .result-area {
+    padding: 20px 20px;
+  }
+  .title {
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 20px;
+  }
+
+  .title h2 {
+    margin-bottom: 2px;
+  }
+}
