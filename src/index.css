@@ -106,32 +106,64 @@ label {
   position: relative;
 }
 
-.input-with-year span,
-.input-with-percentage span {
+.percentage {
   background-color: hsl(203, 41%, 72%);
   padding: 8px 18px;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   font-weight: 700;
-}
-
-.percentage {
   position: absolute;
-  right: -1px;
+  right: -1.4px;
 }
 
 .year {
+  background-color: hsl(203, 41%, 72%);
+  padding: 8px 18px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  font-weight: 700;
   position: absolute;
   left: 63.5%;
 }
 
-.input-with-symbol span {
+.input-with-symbol .success {
   color: hsl(200, 24%, 40%);
   background-color: hsl(203, 41%, 72%);
   padding: 6.5px 16px;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   font-weight: 700;
+}
+
+.span-error {
+  background-color: hsl(4, 69%, 50%);
+  color: hsl(202, 86%, 94%);
+  padding: 6.5px 16px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  font-weight: 700;
+}
+
+.year-error {
+  background-color: hsl(4, 69%, 50%);
+  color: hsl(202, 86%, 94%);
+  padding: 8px 18px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  font-weight: 700;
+  position: absolute;
+  left: 63.5%;
+}
+
+.percentage-error {
+  background-color: hsl(4, 69%, 50%);
+  color: hsl(202, 86%, 94%);
+  padding: 8px 18px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  font-weight: 700;
+  position: absolute;
+  right: -1.4px;
 }
 
 input {

@@ -17,7 +17,6 @@ function Card() {
   const [selectedType, setSelectedType] = useState("");
   const [result, setResult] = useState(null);
   const [yearResult, setYearResult] = useState(null);
-  const [error, setError] = useState(null);
 
   // format total
   function formatCurrency(total) {
@@ -28,6 +27,15 @@ function Card() {
     }).format(total);
   }
 
+  // state before sbmission
+  const [error, setError] = useState({
+    amount: false,
+    yearly: false,
+    percentage: false,
+    selectedType: false,
+  });
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
   // clear all
   function handleClear() {
     setAmount("");
@@ -36,12 +44,28 @@ function Card() {
     setSelectedType("");
     setResult(null);
     setYearResult(null);
+    setError({
+      amount: false,
+      yearly: false,
+      percentage: false,
+      selectedType: false,
+    });
+    setHasSubmitted(false);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+    setHasSubmitted(true);
+    const newErrors = {
+      amount: !amount,
+      yearly: !yearly,
+      percentage: !percentage,
+      selectedType: !selectedType,
+    };
+
+    setError(newErrors);
+    // if field is empty simply retun
     if (!percentage || !amount || !selectedType || !yearly) {
-      setError("This field is required");
       return;
     }
     let calculatedResult = 0;
@@ -71,6 +95,7 @@ function Card() {
         onHandleClear={handleClear}
         onSubmit={handleSubmit}
         error={error}
+        hasSubmitted={hasSubmitted}
       />
       <Result
         result={result}
@@ -94,6 +119,7 @@ function Calculator({
   onHandleClear,
   onSubmit,
   error,
+  hasSubmitted,
 }) {
   return (
     <section className="form-area">
@@ -105,35 +131,63 @@ function Calculator({
       <form>
         <div className="input-group">
           <label>Mortage Amount</label>
-          <div className={`input-with-symbol ${!amount ? "input-error" : ""}`}>
-            <span className="error">£</span>
+          <div
+            className={`input-with-symbol ${
+              error.amount && hasSubmitted ? "input-error" : ""
+            }`}
+          >
+            <span
+              className={`${
+                error.amount && hasSubmitted ? "span-error" : "success"
+              } `}
+            >
+              £
+            </span>
             <input
               type="number"
               value={amount}
               onChange={(e) => onChange(Number(e.target.value))}
             />
           </div>
-          {!amount && <small>{error}</small>}
+          {error.amount && hasSubmitted ? (
+            <small>This field is required</small>
+          ) : (
+            ""
+          )}
         </div>
         <div className="input-box">
           <div className="input-field field">
             <label>Mortgage Term</label>
-            <div className={`input-with-year ${!yearly ? "input-error" : ""}`}>
+            <div
+              className={`input-with-year ${
+                error.yearly && hasSubmitted ? "input-error" : ""
+              }`}
+            >
               <input
                 type="number"
                 value={yearly}
                 onChange={(e) => onYearly(Number(e.target.value))}
               />
 
-              <span className="year error">years</span>
+              <span
+                className={`${
+                  error.percentage && hasSubmitted ? "year-error" : "year"
+                } `}
+              >
+                years
+              </span>
             </div>
-            {!yearly && <small>{error}</small>}
+            {error.yearly && hasSubmitted ? (
+              <small>This field is required</small>
+            ) : (
+              ""
+            )}
           </div>
           <div className="input-field field">
             <label>Interest Rate</label>
             <div
               className={`input-with-percentage ${
-                !percentage ? "input-error" : ""
+                error.percentage && hasSubmitted ? "input-error" : ""
               }`}
             >
               <input
@@ -142,9 +196,21 @@ function Calculator({
                 onChange={(e) => onPercentage(Number(e.target.value))}
               />
 
-              <span className="percentage error">%</span>
+              <span
+                className={`${
+                  error.percentage && hasSubmitted
+                    ? "percentage-error"
+                    : "percentage"
+                } `}
+              >
+                %
+              </span>
             </div>
-            {!percentage && <small>{error}</small>}
+            {error.percentage && hasSubmitted ? (
+              <small>This field is required</small>
+            ) : (
+              ""
+            )}
           </div>
         </div>
         <div>
@@ -167,7 +233,11 @@ function Calculator({
             />
             <span>Interest Only</span>
           </div>
-          {!selectedType && <small>{error}</small>}
+          {error.selectedType && hasSubmitted ? (
+            <small>This field is required</small>
+          ) : (
+            ""
+          )}
         </div>
 
         <button onClick={onSubmit}>
