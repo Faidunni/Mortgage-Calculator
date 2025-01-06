@@ -41,18 +41,22 @@ main {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 50px;
+}
+
+.incompleted {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 25%;
   padding: 0 30px;
 }
 
-.result-area h2 {
+.incompleted h2 {
   color: #fff;
 }
 
-.result-area p {
+.incompleted p {
   color: hsl(202, 86%, 94%);
   font-weight: 400;
   font-size: 15px;
@@ -67,12 +71,12 @@ label {
   color: hsl(200, 26%, 54%);
 }
 
-.input-group {
+.input-group,
+.input-box {
   margin-bottom: 10px;
 }
 
-.input-with-symbol,
-.input-with-label {
+.input-with-symbol {
   display: flex;
   align-items: center;
   border: 1.5px solid hsl(203, 41%, 72%);
@@ -81,14 +85,46 @@ label {
   background-color: #f9f9f9;
 }
 
-.input-with-label span {
-  color: hsl(200, 24%, 40%);
+.input-with-year,
+.input-with-percentage {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid hsl(203, 41%, 72%);
+  border-radius: 5px;
+  padding: 4px 0px;
+  background-color: #f9f9f9;
+  width: 100%;
+}
+
+.input-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-field {
+  width: 48.5%;
+  position: relative;
+}
+
+.input-with-year span,
+.input-with-percentage span {
   background-color: hsl(203, 41%, 72%);
-  padding: 6.5px 16px;
+  padding: 8px 18px;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   font-weight: 700;
 }
+
+.percentage {
+  position: absolute;
+  right: -1px;
+}
+
+.year {
+  position: absolute;
+  left: 63.5%;
+}
+
 .input-with-symbol span {
   color: hsl(200, 24%, 40%);
   background-color: hsl(203, 41%, 72%);
@@ -149,6 +185,51 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+small {
+  color: hsl(4, 69%, 50%);
+}
+
+.error {
+  background-color: hsl(4, 69%, 50%);
+  color: white;
+}
+
+.input-error {
+  border: 1.5px solid hsl(4, 69%, 50%);
+}
+.complete-message {
+  padding: 10px 30px;
+}
+.complete-message h2 {
+  color: #fff;
+}
+
+.complete-message p {
+  color: hsl(202, 86%, 94%);
+}
+
+.result-message {
+  margin-top: 20px;
+  background-color: hsl(196, 75%, 8%);
+  padding: 5px 20px;
+  border-radius: 10px;
+  border-top: 4px solid hsl(61, 70%, 52%);
+}
+
+.result-message p {
+  color: hsl(202, 86%, 94%);
+}
+
+.result-message h2 {
+  margin-top: -14px;
+  margin-bottom: 12px;
+  color: hsl(61, 70%, 52%);
+}
+
+.result-message div {
+  border-bottom: 1px solid hsl(202, 86%, 94%);
 }
 
 @media screen and (max-width: 767px) {
